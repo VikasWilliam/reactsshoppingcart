@@ -1,4 +1,5 @@
 import { createContext, useContext, type ReactNode, useState } from 'react'
+import { ShoppingCart } from '../components/ShoppinCart.tsx'
 
 // 1. Context ke Provider ke props
 type ShoppingCartProviderProps = {
@@ -36,6 +37,7 @@ export function ShoppingCartProvider({ children }: ShoppingCartProviderProps) {
   const [isOpen, setIsOpen] = useState(false)
 
   const openCart = () => setIsOpen(true)
+  console.log('isOpen:', openCart)
   const closeCart = () => setIsOpen(false)
 
   function getItemQuantity(id: number) {
@@ -100,6 +102,7 @@ export function ShoppingCartProvider({ children }: ShoppingCartProviderProps) {
       }}
     >
       {children}
+      <ShoppingCart isOpen={isOpen} />
     </ShoppingCartContext.Provider>
   )
 }
